@@ -10,4 +10,5 @@ class Const{
   static const String scanIcon = 'assets/images/scan_small.png';
   static const String truckImg = 'assets/images/truck.png';
   static const String redTag = 'assets/images/red_tag.png';
+  static const String placeholder = 'assets/images/placeholder.png';
 }

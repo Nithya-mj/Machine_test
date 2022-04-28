@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:machine_test/common/hexcolor.dart';
 import '../common/const.dart';
 
 class SearchWidget extends StatefulWidget {
@@ -16,6 +16,7 @@ class _SearchWidgetState extends State<SearchWidget> {
       child: Padding(
         padding: const EdgeInsets.only(top: 30.0,left: 8.0,right: 8.0),
         child: TextField(
+          //enabled: false,
           onChanged: (value) {
 
           },
@@ -23,9 +24,9 @@ class _SearchWidgetState extends State<SearchWidget> {
           decoration:  InputDecoration(
               prefixIcon: Image.asset(Const.searchIcon,height: 1.0,width: 1.0,),
               suffixIcon: Image.asset(Const.scanIcon,height: 1.0,width: 1.0,),
-              border: OutlineInputBorder(
+              border: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.grey, width: 3.0)),
-              hintText: 'search'),
+              hintText: 'Search',hintStyle: TextStyle(color: HexColor('#727272'),fontSize: 16) ),
         ),
       ),
     );

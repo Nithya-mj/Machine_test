@@ -15,7 +15,6 @@ class NavRouteGenerator {
     switch (settings.name) {
       case initialRoute:
         return MaterialPageRoute(
-          // settings: RouteSettings(name: initialRoute),
             builder: (_) => MainScreen());
       case homeScreenRoute:
         return MaterialPageRoute(builder: (_) => HomeScreen());
@@ -27,12 +26,6 @@ class NavRouteGenerator {
         return MaterialPageRoute(builder: (_) => CartScreen());
       case accountScreenRoute:
         return MaterialPageRoute(builder: (_)=>AccountScreen());
-      // case userDetailScreenRoute:
-      //   ArgumentsRoute route = settings.arguments as ArgumentsRoute;
-      //   return MaterialPageRoute(builder: (_) => UserDetails(userModel: route.userModel));
-      // case notificationDataScreenRoute:
-      //   ArgumentsRoute route = settings.arguments as ArgumentsRoute;
-      //   return MaterialPageRoute(builder: (_) => NotificationData(data: route.id,));
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(
