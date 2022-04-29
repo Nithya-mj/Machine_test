@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:machine_test/common/hexcolor.dart';
+
 import '../common/const.dart';
 
 class SearchWidget extends StatefulWidget {

@@ -19,12 +19,8 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => HomeProvider()),
       ],
-      child: MaterialApp(
+      child:  const MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        //home: HomeScreen(),
         onGenerateRoute: NavRouteGenerator.generateRoute,
         initialRoute: initialRoute,
       ),

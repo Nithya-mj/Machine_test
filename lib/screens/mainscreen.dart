@@ -18,75 +18,70 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        border:Border(top: BorderSide(width: 15.0, color: Colors.blue),)
-      ),
-      child: CupertinoTabScaffold(tabBar: CupertinoTabBar(items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home_outlined,color: HexColor('#7B7B7B'),size: 20,),label: 'Home',),
-        BottomNavigationBarItem(icon: Icon(Icons.category_outlined,color: HexColor('#7B7B7B'),size: 20,),label: 'Categories',),
-        BottomNavigationBarItem(icon: Icon(Icons.local_offer_outlined,color: HexColor('#7B7B7B'),size: 20,),label: 'Offers',),
-        BottomNavigationBarItem(icon: Stack(children: [Image.asset(Const.cartIcon,height: 18.0,width: 18.0,),
-          Padding(
-            padding: const EdgeInsets.only(left: 12.0,),
-            child: Material(
-              child: Container(
-                  height: 13.0,
-                  width: 13.0,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: HexColor('#EF3234'),
-                  ),
-                  alignment: Alignment.center,
-                  child:
-                  const FittedBox(
-                    child: Padding(
-                      padding: EdgeInsets.all(0.80),
-                      child: Text(
-                        '2',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 10,
-                        ),
-                        textAlign: TextAlign.center,
+    return CupertinoTabScaffold(tabBar: CupertinoTabBar(items: [
+      BottomNavigationBarItem(icon: Icon(Icons.home_outlined,color: HexColor('#7B7B7B'),size: 20,),label: 'Home',),
+      BottomNavigationBarItem(icon: Icon(Icons.category_outlined,color: HexColor('#7B7B7B'),size: 20,),label: 'Categories',),
+      BottomNavigationBarItem(icon: Icon(Icons.local_offer_outlined,color: HexColor('#7B7B7B'),size: 20,),label: 'Offers',),
+      BottomNavigationBarItem(icon: Stack(children: [Image.asset(Const.cartIcon,height: 18.0,width: 18.0,),
+        Padding(
+          padding: const EdgeInsets.only(left: 12.0,),
+          child: Material(
+            child: Container(
+                height: 13.0,
+                width: 13.0,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: HexColor('#EF3234'),
+                ),
+                alignment: Alignment.center,
+                child:
+                const FittedBox(
+                  child: Padding(
+                    padding: EdgeInsets.all(0.80),
+                    child: Text(
+                      '2',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 10,
                       ),
+                      textAlign: TextAlign.center,
                     ),
-                  )),
-            ),
+                  ),
+                )),
           ),
-        ],),label: 'Cart',),
-        BottomNavigationBarItem(icon: Image.asset(Const.accountIcon,height: 18.0,width: 18.0,),label: 'Account',),
-      ],),
-          tabBuilder: (context,index){
-            switch(index){
-              case 0:
-                return CupertinoTabView(builder: (context){
-                  return CupertinoPageScaffold(child: HomeScreen());
-                },
-                  onGenerateRoute: (settings) => NavRouteGenerator.generateRoute(settings),);
-              case 1:
-                return CupertinoTabView(builder: (context){
-                  return CupertinoPageScaffold(child: CategoriesScreen());
-                },
-                    onGenerateRoute: (settings) => NavRouteGenerator.generateRoute(settings));
-              case 2:
-                return CupertinoTabView(builder: (context){
-                  return CupertinoPageScaffold(child: OffersScreen());
-                },
-                    onGenerateRoute: (settings) => NavRouteGenerator.generateRoute(settings));
-              case 3:
-                return CupertinoTabView(builder: (context){
-                  return CupertinoPageScaffold(child: CartScreen());
-                },
-                    onGenerateRoute: (settings) => NavRouteGenerator.generateRoute(settings));
-              default:
-                return CupertinoTabView(builder: (context){
-                  return CupertinoPageScaffold(child: AccountScreen());
-                },
-                    onGenerateRoute: (settings) => NavRouteGenerator.generateRoute(settings));
-            }
+        ),
+      ],),label: 'Cart',),
+      BottomNavigationBarItem(icon: Image.asset(Const.accountIcon,height: 18.0,width: 18.0,),label: 'Account',),
+    ],),
+        tabBuilder: (context,index){
+          switch(index){
+            case 0:
+              return CupertinoTabView(builder: (context){
+                return CupertinoPageScaffold(child: HomeScreen());
+              },
+                onGenerateRoute: (settings) => NavRouteGenerator.generateRoute(settings),);
+            case 1:
+              return CupertinoTabView(builder: (context){
+                return CupertinoPageScaffold(child: CategoriesScreen());
+              },
+                  onGenerateRoute: (settings) => NavRouteGenerator.generateRoute(settings));
+            case 2:
+              return CupertinoTabView(builder: (context){
+                return CupertinoPageScaffold(child: OffersScreen());
+              },
+                  onGenerateRoute: (settings) => NavRouteGenerator.generateRoute(settings));
+            case 3:
+              return CupertinoTabView(builder: (context){
+                return CupertinoPageScaffold(child: CartScreen());
+              },
+                  onGenerateRoute: (settings) => NavRouteGenerator.generateRoute(settings));
+            default:
+              return CupertinoTabView(builder: (context){
+                return CupertinoPageScaffold(child: AccountScreen());
+              },
+                  onGenerateRoute: (settings) => NavRouteGenerator.generateRoute(settings));
           }
-      ),
+        }
     );
   }
 }

@@ -1,56 +1,61 @@
 class HomeModel {
+  HomeModel({
+    this.status,
+    this.homeData,
+  });
+
   bool? status;
-  List<HomeData>? homeData;
+  List<HomeDatum>? homeData;
 
-  HomeModel({this.status, this.homeData});
+  factory HomeModel.fromJson(Map<String, dynamic> json) => HomeModel(
+    status: json["status"],
+    homeData: List<HomeDatum>.from(
+        json["homeData"].map((x) => HomeDatum.fromJson(x))),
+  );
 
-  HomeModel.fromJson(Map<String, dynamic> json) {
-    status = json['status'];
-    if (json['homeData'] != null) {
-      homeData = <HomeData>[];
-      json['homeData'].forEach((v) {
-        homeData!.add(HomeData.fromJson(v));
-      });
-    }
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  <String, dynamic>{};
-    data['status'] = status;
-    if (homeData != null) {
-      data['homeData'] = homeData!.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+    "status": status,
+    "homeData": homeData != null
+        ? List<dynamic>.from(homeData!.map((x) => x.toJson()))
+        : null,
+  };
 }
 
-class HomeData {
+class HomeDatum {
+  HomeDatum({
+    this.type,
+    this.values,
+  });
+
   String? type;
-  List<Values>? values;
+  List<Value>? values;
 
-  HomeData({this.type, this.values});
+  factory HomeDatum.fromJson(Map<String, dynamic> json) => HomeDatum(
+    type: json["type"],
+    values: List<Value>.from(json["values"].map((x) => Value.fromJson(x))),
+  );
 
-  HomeData.fromJson(Map<String, dynamic> json) {
-    type = json['type'];
-    if (json['values'] != null) {
-      values = <Values>[];
-      json['values'].forEach((v) {
-        values!.add(Values.fromJson(v));
-      });
-    }
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['type'] = type;
-    if (values != null) {
-      data['values'] = values!.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+    "type": type,
+    "values": values != null
+        ? List<dynamic>.from(values!.map((x) => x.toJson()))
+        : null,
+  };
 }
 
-class Values {
+class Value {
+  Value({
+    this.id,
+    this.name,
+    this.imageUrl,
+    this.bannerUrl,
+    this.image,
+    this.actualPrice,
+    this.offerPrice,
+    this.offer,
+    this.isExpress,
+  });
+
   int? id;
   String? name;
   String? imageUrl;
@@ -61,40 +66,27 @@ class Values {
   int? offer;
   bool? isExpress;
 
-  Values(
-      {this.id,
-        this.name,
-        this.imageUrl,
-        this.bannerUrl,
-        this.image,
-        this.actualPrice,
-        this.offerPrice,
-        this.offer,
-        this.isExpress});
+  factory Value.fromJson(Map<String, dynamic> json) => Value(
+    id: json["id"],
+    name: json["name"],
+    imageUrl: json["image_url"],
+    bannerUrl: json["banner_url"],
+    image: json["image"],
+    actualPrice: json["actual_price"],
+    offerPrice: json["offer_price"],
+    offer: json["offer"],
+    isExpress: json["is_express"],
+  );
 
-  Values.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    imageUrl = json['image_url'];
-    bannerUrl = json['banner_url'];
-    image = json['image'];
-    actualPrice = json['actual_price'];
-    offerPrice = json['offer_price'];
-    offer = json['offer'];
-    isExpress = json['is_express'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['name'] = name;
-    data['image_url'] = imageUrl;
-    data['banner_url'] = bannerUrl;
-    data['image'] = image;
-    data['actual_price'] = actualPrice;
-    data['offer_price'] = offerPrice;
-    data['offer'] = offer;
-    data['is_express'] = isExpress;
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "name": name,
+    "image_url": imageUrl,
+    "banner_url": bannerUrl,
+    "image": image,
+    "actual_price": actualPrice,
+    "offer_price": offerPrice,
+    "offer": offer,
+    "is_express": isExpress,
+  };
 }
