@@ -10,11 +10,7 @@ class ProductsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return
-      // Container(
-      //  height: 280,
-      // // height: MediaQuery.of(context).size.height * 0.30,
-      // width: double.maxFinite,
-      // child:
+
       Consumer<HomeProvider>(
         builder: (context, snapshot,child) {
           final productItem = snapshot.homeModel?.homeData?.firstWhere(
@@ -27,7 +23,6 @@ class ProductsWidget extends StatelessWidget {
             }),
             orElse: () => HomeDatum(),
           );
-          //final categoryItem =snapshot.homeModel?.homeData?.firstWhere((element) => element.type!.contains("category"));
           if(productItem == null || productItem.type ==null){
             return const SizedBox();
           }
@@ -39,8 +34,7 @@ class ProductsWidget extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemBuilder: (context,index){
                 return Container(
-                    // height: 280,
-                    // height: MediaQuery.of(context).size.height * 0.20,
+
                     width: 170.0,
                     margin: const EdgeInsets.only(left: 10),
                     child: Container(
@@ -94,7 +88,7 @@ class ProductsWidget extends StatelessWidget {
                       child: Container(
                         alignment: Alignment.center,
                         child:
-                        //Image.network(snapshot.products?[index].image??'',height: 90,width: 90,),
+
                         FadeInImage.assetNetwork(placeholder: Const.placeholder, image: productItem.values?[index].image ??'',height: 90,width: 90,)
                       )),
                   Container(
@@ -135,6 +129,6 @@ class ProductsWidget extends StatelessWidget {
           );
         }
       );
-    //);
+
   }
 }
